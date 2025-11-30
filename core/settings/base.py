@@ -48,6 +48,8 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+
 # SPECTACULAR_SETTINGS = {
 #     'TITLE': 'Subscriptly API',
 #     'DESCRIPTION': 'API documentation for Subscriptly backend',
@@ -67,6 +69,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'tenants.middleware.TenantMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -135,4 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL='users.User'
 
-
+TENANT_ALLOW_HEADER = True

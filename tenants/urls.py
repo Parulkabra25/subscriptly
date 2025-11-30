@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import TenantCreateView
+from .views import TenantMeView
 
-urlpatterns =[
-    path('create/', TenantCreateView.as_view(), name='tenant-create'),
+urlpatterns=[
+    path("me/",TenantMeView.as_view(),name="tenant-me"),
 ]
