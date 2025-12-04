@@ -69,6 +69,8 @@ urlpatterns = [
     # ), 
 
     path('api/tenants/', include('tenants.urls')),
+
+    path('api/',include('apps.billing.urls')),
     
 ]
     

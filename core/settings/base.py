@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.subscriptions',
     'apps.payments',
+    'apps.billing',
 ]
 
 REST_FRAMEWORK = {
