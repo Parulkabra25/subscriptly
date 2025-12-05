@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny,IsAdminUser
-from .models import Plan
+from apps.subscriptions.models import Plan
 from .serializers import PlanSerializer
 
 # Create your views here.

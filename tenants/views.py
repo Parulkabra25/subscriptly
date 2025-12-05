@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import TenantCreateSerializer, TenantSerializer
+from .permissions import IsTenantAdmin
 
 from apps.billing.models import Subscription
 from django.utils import timezone
@@ -41,3 +42,11 @@ class TenantCreateView(APIView):
         assign_trial_subscription(tenant)
         return Response(TenantSerializer(tenant).data,status=status.HTTP_201_CREATED)
     
+class TenantAdminExampleView(APIView):
+    permission_classes=[IsAuthenticated,IsTenantAdmin]
+
+    def get(self,request):
+        return Response({
+            "message":"You are an admin or owner",
+            "tenant":request.tenant.slug
+        })
