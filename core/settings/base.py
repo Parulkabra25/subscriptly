@@ -30,16 +30,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',    
+    'django.contrib.staticfiles',   
+    # Third party 
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'tenants',
+    # 'tenants',
     # 'drf_spectacular', 
+    # Your apps
     'apps.users',
     'apps.subscriptions',
     'apps.payments',
     'apps.billing',
+    'tenants',
 ]
 
 REST_FRAMEWORK = {

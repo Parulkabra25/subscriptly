@@ -6,7 +6,7 @@ from django.dispatch import receiver
 # Create your models here.
 
 class Tenant(models.Model):
-    name=models.CharField(max_length=150)
+    name=models.CharField(max_length=255,unique=True)
     slug=models.SlugField(max_length=160,unique=True,blank=True)
     owner=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,null=True,related_name='owned_tenants')
     domain=models.CharField(max_length=255,blank=True,null=True,help_text='optional custom domain for this tenant')
@@ -55,7 +55,7 @@ def create_owner_membership(sender, instance,created,**kwargs):
     if created and instance.owner:
         from tenants.models import Membership
         Membership.objects.get_or_create(
-            Tenant=instance,
+            tenant=instance,
             user=instance.owner,
             defaults={"role":Membership.ROLE_OWNER}
         )

@@ -33,10 +33,13 @@ def assign_trial_subscription(tenant):
     )
 
 class TenantCreateView(APIView):
+    permission_classes=[IsAuthenticated]
+    
     def post(self,request):
         serializer=TenantCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        tenant=serializer.save()
+        tenant=serializer.save(owner=request.user)
+        
 
         # Assign free trial
         assign_trial_subscription(tenant)
